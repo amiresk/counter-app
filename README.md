@@ -92,12 +92,68 @@ now:
 
         export default Counter;
 ---------------------------------
+  Now we can go to the next level to add dynmaic to our state value
+  by calling the value from a method:
   
+  import React, { Component } from "react";
+
+        class Counter extends Component {
+          state = {
+            count: 0
+          };
+          render() {
+            return (
+              <React.Fragment>
+                <span>{this.state.count}</span>
+                <button>Increment</button>
+              </React.Fragment>
+            );
+          }
+
+          formatCount() {
+            return this.state.count === 0 ? "Zero" : this.state.count;
+
+            //we can improve the abobe code by using object distructuring
+            // const {count} = this.state;
+            //return count ===0 ? 'Zero' : count;
+          }
+        }
+
+        export default Counter;
   
-  
-  
-  
-  
+  ----
+  we cam add any intem to our propert and call it in {} valid javascrip expersion
+  For example, we can add a URL to our property and render it.
+
+        import React, { Component } from "react";
+
+        class Counter extends Component {
+          state = {
+            count: 0,
+            imageUrl: "https://picsum.photos/500"
+          };
+          render() {
+            return (
+              <React.Fragment>
+                <img src={this.state.imageUrl} alt=""></img>
+                <span>{this.formatCount()}</span>
+                <button>Increment</button>
+              </React.Fragment>
+            );
+          }
+
+          formatCount() {
+            return this.state.count === 0 ? "Zero" : this.state.count;
+
+            // return this.state.count === 0 ? "Zero" : this.state.count;
+
+            //we can improve the abobe code by using object distructuring
+            // const {count} = this.state;
+            //return count ===0 ? 'Zero' : count;
+          }
+        }
+
+        export default Counter;
   
   
   
