@@ -194,3 +194,7 @@ now:
     <span style={ {fontSize: 20} } className="badge badge-primary m-2">
   
   
+  
+  
+<h2 "style:color red">Rending the classes dynamicly<h2>
+  
