@@ -196,5 +196,5 @@ now:
   
   
   
-<h2 "style:color red">Rending the classes dynamicly<h2>
+<h2 style "color:blue" >Rending the classes dynamicly<h2>
   
