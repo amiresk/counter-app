@@ -122,7 +122,7 @@ now:
         export default Counter;
   
   ----
-  we cam add any intem to our propert and call it in {} valid javascrip expersion
+  we can add any objects to our property and call it in {} valid javascrip expersion
   For example, we can add a URL to our property and render it.
 
         import React, { Component } from "react";
@@ -155,7 +155,42 @@ now:
 
         export default Counter;
   
+  ----
+ Now, we will learn how to add CLASS and attribute to our Element<>, we can use a reserve name like "class" in our element, we have to use <h4>className</h4> also we can add style by create a new propery which calls styles = {}
+ 
+ import React, { Component } from "react";
+
+        class Counter extends Component {
+          state = {
+            count: 0
+          };
+
+          styles = {
+            fontSize: 20,
+            fontWeight: "bold"
+          };
+
+          render() {
+            return (
+              <React.Fragment>
+                <span style={this.styles} className="badge badge-primary m-2">
+                  {this.formatCount()}
+                </span>
+                <button className="btn btn-secondary btn-sm">Increment</button>
+              </React.Fragment>
+            );
+          }
+
+          formatCount() {
+            return this.state.count === 0 ? "Zero" : this.state.count;
+
+          }
+        }
+
+        export default Counter;
   
-  
+   second way: we can also eleminate the styles{} property and change the code to this, pass the valiavle to the object {{}}
+   
+    <span style={ {fontSize: 20} } className="badge badge-primary m-2">
   
   
