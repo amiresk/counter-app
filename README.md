@@ -193,10 +193,9 @@ now:
    
     <span style={ {fontSize: 20} } className="badge badge-primary m-2">
   
+ ---------------------- 
   
-  
-  
-<h2 style "color:blue" >Rending the classes dynamicly<h2>
+Rending the classes dynamicly
         
         import React, { Component } from "react";
 
@@ -268,5 +267,119 @@ now:
 
         export default Counter;
   
+ --------------------
  
+ In this section, we will renderling a LIST dynamicly:
+ 
+      render() {
+    // let classes = this.getBadgeClasses();
+
+    return (
+      <React.Fragment>
+        <span className={this.getBadgeClasses()}> {this.formatCount()} </span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
+        <ul>
+          {this.state.tags.map(tag => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      </React.Fragment>
+    );
+  }
+  
+  We can't use "for" to iterate through our array. that way we map. The problem here is React will show an error, all <li> needs a uinque id. how do we solve this problem.... her is the solution:
+        
+          render() {
+    // let classes = this.getBadgeClasses();
+
+    return (
+      <React.Fragment>
+        <span className={this.getBadgeClasses()}> {this.formatCount()} </span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
+        <ul>
+          {this.state.tags.map(tag => (
+            <li key={tag}>{tag}</li>   // we add a key attribute to the tag, so DOM can can distanguash between the elements.
+          ))}
+        </ul>
+      </React.Fragment>
+    );
+  }
+  
+  
+  ---------------------------
+  Conditional Render
+  ---------------------------
+        
+        import React, { Component } from "react";
+
+        class Counter extends Component {
+          state = {
+            count: 0,
+            tags: ["tag1", "tag2", "tag3"]
+          };
+
+          //   styles = {
+          //     fontSize: 20,
+          //     fontWeight: "bold "
+          //   };
+
+          render() {
+            // let classes = this.getBadgeClasses();
+
+            return (
+              <React.Fragment>
+                <ul>
+                  {" "}
+                  {this.state.tags.map(tag => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </React.Fragment>
+            );
+          }
+
+
+        }
+
+        export default Counter;
+        
+        
+--------------TO Modift to this -----see 57:55-----------
+
+                import React, { Component } from "react";
+
+                class Counter extends Component {
+                  state = {
+                    count: 0,
+                    tags: ["tag1", "tag2", "tag3"]
+                  };
+
+                  renderTag() {
+                    if (this.state.tags.length === 0) return <p>There are no tages!</p>;
+
+                    return (
+                      <ul>
+                        {" "}
+                        {this.state.tags.map(tag => (
+                          <li key={tag}>{tag}</li>
+                        ))}
+                      </ul>
+                    );
+                  }
+
+                  render() {
+                    // let classes = this.getBadgeClasses();
+
+                    return <React.Fragment>{this.renderTag()}</React.Fragment>;
+                  }
+                }
+
+                export default Counter;
+
+        
+        
+        
+        
+        
+        
   
